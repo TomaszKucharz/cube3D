@@ -32,7 +32,7 @@ body {
   }
 }
 .cube div {
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
@@ -54,11 +54,49 @@ body {
   align-items: center;
 }
 .cube .flat1 {
-  transform: rotateX(90deg) translateZ(calc(var(--cubeSize) / 2));
+  position: absolute;
+  top: -150px;
+  left: 0px;
+  transform: rotateX(90deg);
 }
 .cube .flat2 {
-  transform: rotateX(90deg) translateZ(calc(var(--cubeSize) / (-2)));
+  position: absolute;
+  top: 150px;
+  transform: rotateX(90deg);
 }
 .cube div span:hover {
   background: rgb(80, 80, 235);
+  cursor: pointer;
+}
+.explodeY .flat1 .flat2 {
+  animation: explodeUp 5s linear;
+}
+
+.explode div span {
+  animation: explodeCube 5s linear;
+}
+@keyframes explodeUp {
+  0% {
+    transform: translateZ(calc(var(--cubeSize) / 0.7));
+  }
+  30% {
+    transform: translateZ(calc(var(--cubeSize) / 0.7));
+  }
+  100% {
+    transform: translateZ(calc(var(--cubeSize) / 2));
+  }
+}
+@keyframes explodeCube {
+  0% {
+    transform: rotateY(calc(90deg * var(--i)))
+      translateZ(calc(var(--cubeSize) / 0.7));
+  }
+  30% {
+    transform: rotateY(calc(90deg * var(--i)))
+      translateZ(calc(var(--cubeSize) / 0.7));
+  }
+  100% {
+    transform: rotateY(calc(90deg * var(--i)))
+      translateZ(calc(var(--cubeSize) / 2));
+  }
 }
