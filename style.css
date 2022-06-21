@@ -52,6 +52,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 .cube .flat1 {
   position: absolute;
@@ -66,7 +67,6 @@ body {
 }
 .cube div span:hover {
   background: rgb(80, 80, 235);
-  cursor: pointer;
 }
 .explodeY .flat1 .flat2 {
   animation: explodeUp 5s linear;
