@@ -3,10 +3,10 @@
   padding: 0;
   box-sizing: border-box;
   color: red;
-  font-size: 40px;
+  font-size: 30px;
 }
 :root {
-  --cubeSize: 300px;
+  --cubeSize: 100px;
 }
 body {
   display: flex;
@@ -56,47 +56,76 @@ body {
 }
 .cube .flat1 {
   position: absolute;
-  top: -150px;
+  top: calc(var(--cubeSize) / -2);
   left: 0px;
   transform: rotateX(90deg);
 }
 .cube .flat2 {
   position: absolute;
-  top: 150px;
+  top: calc(var(--cubeSize) / 2);
   transform: rotateX(90deg);
 }
 .cube div span:hover {
   background: rgb(80, 80, 235);
 }
-.explodeY .flat1 .flat2 {
+.explodeY .flat1 {
   animation: explodeUp 5s linear;
+}
+.explodeY .flat2 {
+  animation: explodeDown 5s linear;
 }
 
 .explode div span {
   animation: explodeCube 5s linear;
 }
+
 @keyframes explodeUp {
   0% {
-    transform: translateZ(calc(var(--cubeSize) / 0.7));
+    transform: rotateX(10deg);
+    top: calc(var(--cubeSize) * -1.5);
   }
-  30% {
-    transform: translateZ(calc(var(--cubeSize) / 0.7));
+  10% {
+    transform: rotateX(10deg);
+    top: calc(var(--cubeSize) * -1.5);
+  }
+  90% {
+    transform: rotateX(85deg);
+    top: calc(var(--cubeSize) * -0.6);
   }
   100% {
-    transform: translateZ(calc(var(--cubeSize) / 2));
+    transform: rotateX(90deg);
+    top: calc(var(--cubeSize) * -0.5);
+  }
+}
+@keyframes explodeDown {
+  0% {
+    transform: rotateX(170deg);
+    top: calc(var(--cubeSize) * 1.5);
+  }
+  10% {
+    transform: rotateX(170deg);
+    top: calc(var(--cubeSize) * 1.5);
+  }
+  90% {
+    transform: rotateX(100deg);
+    top: calc(var(--cubeSize) * 0.6);
+  }
+  100% {
+    transform: rotateX(90deg);
+    top: calc(var(--cubeSize) * 0.5);
   }
 }
 @keyframes explodeCube {
   0% {
-    transform: rotateY(calc(90deg * var(--i)))
+    transform: rotateY(calc(90deg * var(--i))) rotateZ(45deg)
       translateZ(calc(var(--cubeSize) / 0.7));
   }
-  30% {
-    transform: rotateY(calc(90deg * var(--i)))
+  10% {
+    transform: rotateY(calc(90deg * var(--i))) rotateZ(45deg)
       translateZ(calc(var(--cubeSize) / 0.7));
   }
   100% {
-    transform: rotateY(calc(90deg * var(--i)))
+    transform: rotateY(calc(90deg * var(--i))) rotateZ(0deg)
       translateZ(calc(var(--cubeSize) / 2));
   }
 }
